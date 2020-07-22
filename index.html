@@ -42,7 +42,7 @@
             <div class="col-md-4">
                 <div class="withdraw status">
                     <h5 class="text-center">Withdraw</h5>
-                    <h2 class="text-center">$ 00</h2>
+                    <h2 class="text-center">$ <span id="currentWithdraw">00</span></h2>
                 </div>
             </div>
             
@@ -120,8 +120,10 @@
         const withdrawBtn = document.getElementById("addwithdraw");
         withdrawBtn.addEventListener("click", function(){
             const withdrawNumber = getInputNumber("withdrawAmount");
-            console.log(withdrawNumber);
             
+            updateSPanText("currentWithdraw", withdrawNumber);
+            updateSPanText("currentBalance", -1*withdrawNumber);
+            document.getElementById('withdrawAmount').value = "";
         })
 
         function getInputNumber(id){
